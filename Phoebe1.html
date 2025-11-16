@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Bangaram!!</title>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    font-family: 'Allura', cursive;
+    background: linear-gradient(135deg, #ffb3c6, #ff8fab, #ffcade);
+    overflow-x: hidden;
+}
+
+/* LOADING */
+#loading-screen { position: fixed; top:0; left:0; width:100%; height:100%; background:#ffe1ec; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:9999; }
+.loader-cake { width:70px; height:70px; animation:bounce 1s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-20px);} }
+
+/* PASSWORD */
+#password-screen { text-align:center; margin-top:150px; }
+#password-screen input { padding:10px; border-radius:8px; border:none; }
+#password-screen button { padding:10px 20px; margin-top:10px; background:#ff4d6d; color:white; border:none; border-radius:10px; cursor:pointer; }
+
+/* MAIN CONTENT */
+#main-content { display:none; padding:20px; }
+
+/* NOTES */
+.note { background:#ffe6ef; margin:10px 0; padding:10px; border-radius:12px; border:1px solid #ffb3c6; }
+
+/* POLAROID */
+.polaroid { width:200px; padding:10px; background:white; border-radius:12px; margin:10px; display:inline-block; text-align:center; box-shadow:0px 4px 10px rgba(0,0,0,0.2); transition:transform 0.3s ease; }
+.polaroid:hover { transform:rotate(3deg) scale(1.05); }
+
+/* LOVE LETTER */
+#love-letter { background:white; padding:20px; border-radius:15px; border:2px dashed #ff8fa3; max-width:500px; margin:20px auto; box-shadow:0 4px 10px rgba(0,0,0,0.1); white-space:pre-line; }
+
+/* MODAL */
+#modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
+#modal { background:white; padding:20px; border-radius:12px; width:300px; text-align:center; }
+
+/* FLOATING ICONS */
+.floating { position:fixed; bottom:-100px; animation:floatUp 6s linear infinite; opacity:0.8; }
+@keyframes floatUp { 0%{transform:translateY(0);} 100%{transform:translateY(-120vh);} }
+
+/* CONFETTI CANVAS */
+#confetti-canvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading-screen">
+    <img class="loader-cake" src="https://cdn-icons-png.flaticon.com/512/6230/6230751.png">
+    <p>Preparing something sweet for you honey... 🎂💖</p>
+</div>
+
+<!-- PASSWORD -->
+<div id="password-screen">
+    <h1>Hi my love 💗</h1>
+    <p>Enter the secret password hehe:</p>
+    <input type="password" id="pass-input">
+    <br>
+    <button onclick="checkPassword()">Enter</button>
+</div>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+
+    <h1>Happy Birthday my Bangaram 🎀🎂💖</h1>
+
+    <!-- CONFETTI BUTTON -->
+    <button onclick="startConfetti()" style="padding:10px 20px; background:#ff4d6d; color:white; border:none; border-radius:12px; cursor:pointer;">🎉 Celebration button!</button>
+
+    <!-- NOTES -->
+    <h2>Love Notes</h2>
+    <div class="note"><strong>Note 1:</strong> Happy Birthday honey. Every day with you is a gift to me.</div>
+    <div class="note"><strong>Note 2:</strong> Remember that call you made to me after you tried my mac n cheese for the first time? I kinda had a feeling then.</div>
+    <div class="note"><strong>Note 3:</strong> You're such a sweet and kind and beautiful soul that I love all the time.</div>
+    <div class="note"><strong>Note 4:</strong> I'm beyond blessed to have you in my life.</div>
+
+    <!-- LOVE LETTER -->
+    <h2>Love Letter 💌</h2>
+    <div id="love-letter">My sweetest Phoebe,
+
+Every day with you becomes an adventure of sorts no matter how far we are from each other.
+You are warmth, comfort, love and magic all in one.
+Thank you for filling my life with laughter, softness, and light this past year.
+Every moment I think of you is a moment I thank God for you.
+I never thought one person could bring about such a change in another person's life, but you're a pretty special person so I shouldn't be surprised.
+
+I am endlessly grateful for you.
+I love you more than words can ever express. 💗
+Happy birthday bangaram, I love you baby.
+
+— Yours, always.</div>
+
+    <!-- POLAROID -->
+    <h2>My most fav pics of you 📸</h2>
+    <div>
+        <div class="polaroid"><img src="https://i.ibb.co/xqx2WYZK/Whats-App-Image-2025-11-16-at-20-52-27-68ab5318.jpg" alt="Whats-App-Image-2025-11-16-at-20-52-27-68ab5318">Memory 1</div>
+        <div class="polaroid"><img src="https://i.ibb.co/GD5VRbN/Whats-App-Image-2025-11-16-at-20-52-28-323dc2c3.jpg" alt="Whats-App-Image-2025-11-16-at-20-52-28-323dc2c3">Memory 2</div>
+        <div class="polaroid"><img src="https://i.ibb.co/FCxRqQK/Whats-App-Image-2025-11-16-at-20-52-28-c66ce2fa.jpg" alt="Whats-App-Image-2025-11-16-at-20-52-28-c66ce2fa">Memory 3</div>
+        <div class="polaroid"><img src="https://i.ibb.co/35bmrgK1/Whats-App-Image-2025-11-16-at-20-52-29-71e1b7e8.jpg" alt="Whats-App-Image-2025-11-16-at-20-52-29-71e1b7e8">Memory 4</div>
+        <div class="polaroid"><img src="https://i.ibb.co/Y7nYY5p4/Whats-App-Image-2025-11-16-at-20-52-36-52507748.jpg" alt="Whats-App-Image-2025-11-16-at-20-52-36-52507748">Memory 5</div>
+    </div>
+
+    <!-- (Surprise section removed) -->
+<!-- Surprise modal removed -->
+
+<script>
+/* LOADING */
+window.onload = () => { setTimeout(()=>{ document.getElementById("loading-screen").style.display="none"; },1700); };
+
+/* PASSWORD */
+function checkPassword(){ const p=document.getElementById("pass-input").value; if(p==="macncheese"){ document.getElementById("password-screen").style.display="none"; document.getElementById("main-content").style.display="block";} else alert("Wrong password, my love ❣️"); }
+
+/* Surprise typing removed */
+/* FLOATING ICONS */
+function spawnFloating(){ const icons=["❤️","💖","💗","🎂","🎈","💞"]; const el=document.createElement("div"); el.className="floating"; el.textContent=icons[Math.floor(Math.random()*icons.length)]; el.style.left=Math.random()*100+"vw"; el.style.fontSize=(20+Math.random()*30)+"px"; el.style.animationDuration=(4+Math.random()*4)+"s"; document.body.appendChild(el); setTimeout(()=>el.remove(),9000);} setInterval(spawnFloating,600);
+
+/* CONFETTI EXPLOSION */
+function startConfetti(){
+    const duration = 2000;
+    const end = Date.now() + duration;
+    const colors = ['#ff4d6d', '#ff8fab', '#ffcad4', '#ffffff', '#ffb3c6'];
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    function randomConfetti(){
+        return {
+            x: Math.random()*canvas.width,
+            y: Math.random()*canvas.height,
+            r: Math.random()*6+2,
+            color: colors[Math.floor(Math.random()*colors.length)],
+            speed: Math.random()*3+2
+        };
+    }
+
+    let confetti = Array.from({length:150}, randomConfetti);
+
+    function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        confetti.forEach(c=>{
+            ctx.beginPath();
+            ctx.arc(c.x,c.y,c.r,0,Math.PI*2);
+            ctx.fillStyle=c.color;
+            ctx.fill();
+            c.y += c.speed;
+            if(c.y > canvas.height) c.y=0;
+        });
+
+        if(Date.now() < end) requestAnimationFrame(draw);
+        else ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+
+    draw();
+}
+</script>
+
+</body>
+</html>
